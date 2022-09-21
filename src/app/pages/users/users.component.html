@@ -1,0 +1,47 @@
+<section class="my-6">
+  <button mat-raised-button color="primary" (click)="onDialog()">
+    Add User
+  </button>
+
+  <ng-container *ngIf="isLoading; else notLoading">
+    <app-loader></app-loader>
+  </ng-container>
+  <ng-template #notLoading>
+    <table class="table-auto w-full mt-4">
+      <thead>
+        <tr>
+          <th class="uppercase w-14">No</th>
+          <th class="uppercase w-24">Action</th>
+          <th class="uppercase">Name</th>
+          <th class="uppercase">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dataUsers; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td class="flex gap-2 items-center justify-center">
+            <a [routerLink]="item?.id" class="cursor-pointer" matTooltip="View">
+              <mat-icon>visibility</mat-icon>
+            </a>
+            <div
+              class="cursor-pointer"
+              matTooltip="Edit"
+              (click)="onDialog(item)"
+            >
+              <mat-icon>edit</mat-icon>
+            </div>
+            <div
+              class="cursor-pointer"
+              matTooltip="Delete"
+              (click)="onDelete(item?.id)"
+            >
+              <mat-icon>delete</mat-icon>
+            </div>
+          </td>
+          <td>{{ item?.name }}</td>
+          <td>{{ item?.address }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+</section>

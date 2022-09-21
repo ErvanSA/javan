@@ -1,0 +1,36 @@
+<div mat-dialog-title class="relative">
+  <div class="flex justify-between items-center gap-4">
+    <div class="">{{ data ? "Edit " : "Add " }} Data User</div>
+    <div class="cursor-pointer" matTooltip="Close" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </div>
+  </div>
+  <hr />
+</div>
+<form [formGroup]="formData" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <div class="flex flex-col gap-4">
+      <mat-form-field class="w-full" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error> Name is required </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-full" appearance="outline">
+        <mat-label>Address</mat-label>
+        <textarea matInput formControlName="address" rows="1"></textarea>
+        <mat-error> Address is required </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-raised-button
+      type="submit"
+      [disabled]="formData.invalid"
+      color="primary"
+    >
+      {{ data ? "Update" : "Save" }}
+    </button>
+  </div>
+</form>

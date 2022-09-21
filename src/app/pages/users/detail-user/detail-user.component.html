@@ -1,0 +1,21 @@
+<section class="detial-user mt-4">
+  <ng-container *ngIf="isLoading; else notLoading">
+    <app-loader></app-loader>
+  </ng-container>
+  <ng-template #notLoading>
+    <div class="flex flex-col gap-4">
+      <div class="flex items-center">
+        <div class="font-medium">Name :</div>
+        <div>{{ dataUser?.name }}</div>
+      </div>
+      <div class="flex items-center">
+        <div class="font-medium">Address :</div>
+        <div>{{ dataUser?.address }}</div>
+      </div>
+      <div class="flex items-center">
+        <div class="font-medium">createdAt :</div>
+        <div>{{ dataUser?.createdAt | date }}</div>
+      </div>
+    </div>
+  </ng-template>
+</section>

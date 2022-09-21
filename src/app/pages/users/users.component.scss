@@ -1,0 +1,15 @@
+table {
+  td,
+  th {
+    padding: 0.4rem 1rem;
+    border-width: 1px;
+  }
+
+  th {
+    background-color: #f1f1f1;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f1f1f1;
+  }
+}
